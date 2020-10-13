@@ -51,10 +51,26 @@ const favoriteDessertsGroupB = {
 // - Second, put them in order
 
 // Your function should work with both objects and any other objects of the same shape.
-
 function sortByPopularity(obj) {
-  // Write code
-}
+  // Write code	  // Write code
+  const values = Object.values(obj);
+  values.reverse();
+  let countDesserts = values.reduce((acc, dessert) => {
+    if (typeof acc[dessert] === "undefined") {
+      acc[dessert] = 1;
+    } else {
+      acc[dessert] += 1;
+    }
+    return acc;
+  }, {});
+
+  let finalAnswer = Object.keys(countDesserts).sort((keya, keyb) => {
+    return countDesserts[keyb] - countDesserts[keya];
+  });
+  return finalAnswer;
+}	
+
+
 
 // Verification via console.log()
 console.log(
